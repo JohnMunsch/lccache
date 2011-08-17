@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>lscache</title>
+      <title>lccache</title>
       <style>
         body {
 	        font-family: Arial, sans-serif;
@@ -15,9 +15,9 @@
       </style>
     </head>
   <body>
-    <h1>lscache</h1>
+    <h1>lccache</h1>
 
-  	<p>The lscache library is a simple library that emulates memcache
+  	<p>The lccache library is a simple library that emulates memcache
 	  functions using HTML5 localStorage, so that you can store items with
 		an expiration date. These demos show its current functionality - set,
 		get, remove.</p>
@@ -27,29 +27,29 @@
 		stored.)</p>
 		
 	  <textarea id="set">
- lscache.set('forever', 'And Ever');
- lscache.set('greeting', 'Hiii!', 2);
- lscache.set('counter', 1, 2);
- lscache.set('data', {'name': 'Pamela', 'age': 26}, 2);
+ lccache.set('forever', 'And Ever');
+ lccache.set('greeting', 'Hiii!', 2);
+ lccache.set('counter', 1, 2);
+ lccache.set('data', {'name': 'Pamela', 'age': 26}, 2);
     </textarea><br>
 	  <button onclick="run('set')">Run</button><br>
 	  
-    <p><b>Retrieve lscache entries:</b></p>
+    <p><b>Retrieve lccache entries:</b></p>
 	  <textarea id="get">
- console.log(lscache.get('forever'));
- console.log(lscache.get('greeting'));
- console.log(lscache.get('counter')+1);
- console.log(lscache.get('data').name);
+ console.log(lccache.get('forever'));
+ console.log(lccache.get('greeting'));
+ console.log(lccache.get('counter')+1);
+ console.log(lccache.get('data').name);
     </textarea><br>
     <button onclick="run('get')">Run</button><br>
 
-    <p><b>Delete lscache entries and try to retrieve them:</b></p>
+    <p><b>Delete lccache entries and try to retrieve them:</b></p>
     <textarea id="delete">
- lscache.remove('forever')
- lscache.remove('greeting');
- lscache.remove('counter');
- lscache.remove('data');
- console.log(lscache.get('greeting'));
+ lccache.remove('forever')
+ lccache.remove('greeting');
+ lccache.remove('counter');
+ lccache.remove('data');
+ console.log(lccache.get('greeting'));
     </textarea><br>
     <button onclick="run('delete')">Run</button>
 
@@ -66,7 +66,7 @@
     <!-- <script src="brianleroux-lawnchair/src/adapters/memory.js"></script> -->
     <!-- <script src="brianleroux-lawnchair/src/adapters/webkit-sqlite.js"></script> -->
 
-	  <script src="lscache.js"></script>
+	  <script src="lccache.js"></script>
 	  <script>
       function run(id) {
         var code = document.getElementById(id).value;
