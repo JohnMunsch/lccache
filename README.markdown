@@ -85,10 +85,10 @@ http://johnmunsch.github.com/lccache/demo.html
 
 Real-World Usage
 ----------
-These are the original examples given by Pamela, note that I've not changed any 
+*These are the original examples given by Pamela, note that I've not changed any 
 of the references from lscache to lccache because she used lscache for all of 
 her work. However, the examples of why you want to use something like this are 
-just as relevant to both libraries.
+just as relevant to both libraries.*
 
 This library was originally developed with the use case of caching results of 
 JSON API queries to speed up my webapps and give them better protection against 
