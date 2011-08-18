@@ -82,6 +82,9 @@ alert(lccache.get('data').name);
 For more live examples, play around with the demo here:
 http://johnmunsch.github.com/lccache/demo.html
 
+or check out the QUnit tests here:
+http://johnmunsch.github.com/lccache/test.html
+
 Installation
 ----------
 
