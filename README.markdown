@@ -1,7 +1,16 @@
-lscache
+lccache
 ===============================
-This is a simple library that emulates `memcache` functions using HTML5 `localStorage`, so that you can cache data on the client
-and associate an expiration time with each piece of data. If the `localStorage` limit (~5MB) is exceeded, it tries to create space by removing the items that are closest to expiring anyway. If `localStorage` is not available at all in the browser, the library degrades by simply not caching and all cache requests return null.
+This is a port of Pamela Fox's nifty little library 
+[lscache](https://github.com/pamelafox/lscache) to use 
+[Lawnchair](http://westcoastlogic.com/lawnchair/) for 
+storage rather than HTML5 localStorage. 
+
+In either case, if what you need is a simple library that emulates `memcache` 
+functions so that you can cache data on the client and associate an expiration 
+time with each piece of data, then you want one of these libraries. The question
+you need to answer is, "Do I only need to support newer browsers that have HTML5 
+localStorage, or will I need to support older browsers as well?" If the former, 
+lscache is your ticket, if the latter, please check out this version.
 
 Methods
 -------
@@ -10,8 +19,8 @@ The library exposes 3 methods: `set()`, `get()`, and `remove()`.
 
 * * *
 
-### lscache.set
-Stores the value in localStorage. Expires after specified number of minutes.
+### lccache.set
+Stores the value in Lawnchair. Expires after specified number of minutes.
 #### Arguments
 1. `key` (**string**)
 2. `value` (**Object|string**)
@@ -19,8 +28,8 @@ Stores the value in localStorage. Expires after specified number of minutes.
 
 * * *
 
-### lscache.get
-Retrieves specified value from localStorage, if not expired.
+### lccache.get
+Retrieves specified value from Lawnchair, if not expired.
 #### Arguments
 1. `key` (**string**)
 #### Returns
@@ -28,8 +37,8 @@ Retrieves specified value from localStorage, if not expired.
 
 * * *
 
-### lscache.remove
-Removes a value from localStorage.
+### lccache.remove
+Removes a value from Lawnchair.
 #### Arguments
 1. `key` (**string**)
 
@@ -37,49 +46,56 @@ Removes a value from localStorage.
 Usage
 -------
 
-The interface should be familiar to those of you who have used `memcache`, and should be easy to understand for those of you who haven't.
+The interface should be familiar to those of you who have used `memcache`, and 
+should be easy to understand for those of you who haven't.
 
-For example, you can store a string for 2 seconds using `lscache.set()`:
+For example, you can store a string for 2 minutes using `lccache.set()`:
 
 ```js
-lscache.set('greeting', 'Hello World!', 2);
+lccache.set('greeting', 'Hello World!', 2);
 ```
 
-You can then retrieve that string with `lscache.get()`:
+You can then retrieve that string with `lccache.get()`:
 
 ```js
-alert(lscache.get('greeting'));
+alert(lccache.get('greeting'));
 ```
 
-You can remove that string from the cache entirely with `lscache.remove()`:
+You can remove that string from the cache entirely with `lccache.remove()`:
 
 ```js
-lscache.remove('greeting');
+lccache.remove('greeting');
 ```
 
-The library also takes care of serializing objects, so you can store more complex data:
+The library handles JSON objects so you aren't restricted to only storing strings:
 
 ```js
-lscache.set('data', {'name': 'Pamela', 'age': 26}, 2);
+lccache.set('data', {'name': 'Pamela', 'age': 26}, 2);
 ```
 
 And then when you retrieve it, you will get it back as an object:
 
 ```js
-alert(lscache.get('data').name);
+alert(lccache.get('data').name);
 ```
 
 For more live examples, play around with the demo here:
-http://pamelafox.github.com/lscache/demo.html
+http://johnmunsch.github.com/lccache/demo.html
 
 
 Real-World Usage
 ----------
-This library was originally developed with the use case of caching results of JSON API queries
-to speed up my webapps and give them better protection against flaky APIs.
-(More on that in this [blog post](http://blog.pamelafox.org/2010/10/lscache-localstorage-based-memcache.html))
+These is the original example given by Pamela, note that I've not changed any of
+the references from lscache to lccache because she used lscache for all of her
+work. However, the examples of why you want to use something like this are just
+as relevant to both libraries.
 
-For example, [RageTube](http://ragetube.net) uses `lscache` to fetch Youtube API results for 10 minutes:
+This library was originally developed with the use case of caching results of 
+JSON API queries to speed up my webapps and give them better protection against 
+flaky APIs. (More on that in this [blog post](http://blog.pamelafox.org/2010/10/lscache-localstorage-based-memcache.html))
+
+For example, [RageTube](http://ragetube.net) uses `lscache` to fetch Youtube API 
+results for 10 minutes:
 
 ```js
 var key = 'youtube:' + query;
@@ -106,11 +122,13 @@ function fetchJSON() {
 }
 ```
 
-It does not have to be used for only expiration-based caching, however. It can also be used as just a wrapper for `localStorage`, as it provides the benefit of handling JS object (de-)serialization.
+It does not have to be used for only expiration-based caching, however. It can 
+also be used as just a wrapper for `localStorage`, as it provides the benefit 
+of handling JS object (de-)serialization.
 
-For example, the [QuizCards](http://quizcards.info) Chrome extensions use `lscache`
-to store the user statistics for each user bucket, and those stats are an array
-of objects.
+For example, the [QuizCards](http://quizcards.info) Chrome extensions use 
+`lscache` to store the user statistics for each user bucket, and those stats are 
+an array of objects.
 
 ```js
 function initBuckets() {
@@ -131,7 +149,11 @@ function initBuckets() {
 Browser Support
 ----------------
 
-The `lscache` library should work in all browsers where `localStorage` is supported.
-A list of those is here:
-http://www.quirksmode.org/dom/html5.html
+The `lccache` library should work in all browsers for which a Lawnchair adapter
+exists. At the time of writing there were adapters for storing data in 
+localStorage, the Blackberry persistent store, window name, Google Gears SQLite,
+IE userdata, Indexed DB, and memory.
+
+The current list of those is here:
+http://westcoastlogic.com/lawnchair/adapters/
 
