@@ -23,51 +23,45 @@
 		get, remove.</p>
 
     <p><b>Set memcache entries (most with expiration of 2 minutes):</b><br>
-		(Check "Storage->Local Storage" in Chrome Dev Tools to see them
-		stored.)</p>
+		(Check "Resources->Local Storage" in Chrome Dev Tools or type 
+		"localStorage" into the Firebug Console to see what is stored.)</p>
 		
-	  <textarea id="set">
- lccache.set('forever', 'And Ever');
- lccache.set('greeting', 'Hiii!', 2);
- lccache.set('counter', 1, 2);
- lccache.set('data', {'name': 'Pamela', 'age': 26}, 2);
-    </textarea><br>
-	  <button onclick="run('set')">Run</button><br>
+    <textarea id="set">lccache.set('forever', 'And Ever');
+lccache.set('greeting', 'Hiii!', 2);
+lccache.set('counter', 1, 2);
+lccache.set('data', {'name': 'Pamela', 'age': 26}, 2);</textarea><br>
+	<button onclick="run('set')">Run</button><br>
 	  
     <p><b>Retrieve lccache entries:</b></p>
-	  <textarea id="get">
- console.log(lccache.get('forever'));
- console.log(lccache.get('greeting'));
- console.log(lccache.get('counter')+1);
- console.log(lccache.get('data').name);
-    </textarea><br>
+	<textarea id="get">console.log(lccache.get('forever'));
+console.log(lccache.get('greeting'));
+console.log(lccache.get('counter')+1);
+console.log(lccache.get('data').name);</textarea><br>
     <button onclick="run('get')">Run</button><br>
 
     <p><b>Delete lccache entries and try to retrieve them:</b></p>
-    <textarea id="delete">
- lccache.remove('forever')
- lccache.remove('greeting');
- lccache.remove('counter');
- lccache.remove('data');
- console.log(lccache.get('greeting'));
-    </textarea><br>
+    <textarea id="delete">lccache.remove('forever')
+lccache.remove('greeting');
+lccache.remove('counter');
+lccache.remove('data');
+console.log(lccache.get('greeting'));</textarea><br>
     <button onclick="run('delete')">Run</button>
 
     <div id="result"></div><br>
 
-    <script src="brianleroux-lawnchair/src/Lawnchair.js"></script>
-    <script src="brianleroux-lawnchair/src/adapters/dom.js"></script>
-    <script src="brianleroux-lawnchair/src/adapters/window-name.js"></script>
+    <script src="js/libs/Lawnchair.js"></script>
+    <script src="js/libs/adapters/dom.js"></script>
+    <script src="js/libs/adapters/window-name.js"></script>
 
-    <!-- <script src="brianleroux-lawnchair/src/adapters/blackberry-persistent-storage.js"></script> -->
-    <!-- <script src="brianleroux-lawnchair/src/adapters/gears-sqlite.js"></script> -->
-    <!-- <script src="brianleroux-lawnchair/src/adapters/ie-userdata.js"></script> -->
-    <!-- <script src="brianleroux-lawnchair/src/adapters/indexed-db.js"></script> -->
-    <!-- <script src="brianleroux-lawnchair/src/adapters/memory.js"></script> -->
-    <!-- <script src="brianleroux-lawnchair/src/adapters/webkit-sqlite.js"></script> -->
+    <!-- <script src="js/libs/adapters/blackberry-persistent-storage.js"></script> -->
+    <!-- <script src="js/libs/adapters/gears-sqlite.js"></script> -->
+    <!-- <script src="js/libs/adapters/ie-userdata.js"></script> -->
+    <!-- <script src="js/libs/adapters/indexed-db.js"></script> -->
+    <!-- <script src="js/libs/adapters/memory.js"></script> -->
+    <!-- <script src="js/libs/adapters/webkit-sqlite.js"></script> -->
 
-	  <script src="lccache.js"></script>
-	  <script>
+    <script src="lccache.js"></script>
+    <script>
       function run(id) {
         var code = document.getElementById(id).value;
         eval(code);

@@ -82,6 +82,16 @@ alert(lccache.get('data').name);
 For more live examples, play around with the demo here:
 http://johnmunsch.github.com/lccache/demo.html
 
+Installation
+----------
+
+Add lccache.js to your project and make sure you include it in any pages that
+need it (see demo.html or test.html for examples). Even though I've included a
+copy of Lawnchair in the repository so the demo and test would work, I don't
+really recommend using it. It's Lawnchair 0.6.3 and a better/newer version may
+be available by the time you read this. If not, or if newer versions prove
+incompatible, know that this code worked with that version and get the whole
+package from his project.
 
 Real-World Usage
 ----------
