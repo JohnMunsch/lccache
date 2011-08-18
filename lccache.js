@@ -119,6 +119,8 @@ var lccache = function() {
     get: function(key) {
       if (!supportsStorage) return null;
 
+      var retVal = null;
+      
       Lawnchair(function () {
         this.get(key, function (obj) {
           if (obj != null) {
@@ -131,24 +133,24 @@ var lccache = function() {
                 });
               } else {
                 if (obj.value.lccacheNonJSONValue != null) {
-                  return obj.value.lccacheNonJSONValue;
+                  retVal = obj.value.lccacheNonJSONValue;
                 } else {
-                  return obj.value;                
+                  retVal = obj.value;                
                 }
               }
             } else {
               // No expiration was specified. Just return what we found.
               if (obj.value.lccacheNonJSONValue != null) {
-                return obj.value.lccacheNonJSONValue;
+                retVal = obj.value.lccacheNonJSONValue;
               } else {
-                return obj.value;                
+                retVal = obj.value;                
               }
             }
           }
         });
       });
 
-      return null;
+      return retVal;
     },
 
     /**
