@@ -96,6 +96,13 @@ be available by the time you read this. If not, or if newer versions prove
 incompatible, know that this code worked with that version and get the whole
 package from his project.
 
+*NOTE: localStorage on Firefox (and maybe on other browsers as well) is disabled 
+when you run your web pages by just opening them in the browser. So if you think
+you'll just double click on a file and it'll work, it won't. I've read it's for 
+security reasons, though I don't know from what it protects you. So just serve your
+web pages up from some kind of server (Tomcat, Apache, or whatever) even when you're
+testing them locally.*
+
 Real-World Usage
 ----------
 *These are the original examples given by Pamela, note that I've not changed any 
