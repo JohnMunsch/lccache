@@ -2,7 +2,7 @@ lccache
 ===============================
 This is a port of Pamela Fox's nifty little library 
 [lscache](https://github.com/pamelafox/lscache) to use 
-[Lawnchair](http://westcoastlogic.com/lawnchair/) for 
+[Lawnchair](https://github.com/brianleroux/lawnchair) for 
 storage rather than HTML5 localStorage. 
 
 In either case, if what you need is a simple library that emulates `memcache` 
@@ -175,5 +175,5 @@ localStorage, the Blackberry persistent store, window name, Google Gears SQLite,
 IE userdata, Indexed DB, and memory.
 
 The current list of those is here:
-http://westcoastlogic.com/lawnchair/adapters/
+http://brian.io/lawnchair/adapters/
 
