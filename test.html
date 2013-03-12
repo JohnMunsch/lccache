@@ -21,7 +21,7 @@ test('Testing set() and get() with string', function() {
   var key = 'thekey';
   var value = 'thevalue'
   lccache.set(key, value, 1); 
-  equals(lccache.get(key), value, 'We expect value to be ' + value);
+  equal(lccache.get(key), value, 'We expect value to be ' + value);
 });
 
 test('Testing set() with non-string values', function() {
@@ -30,24 +30,24 @@ test('Testing set() with non-string values', function() {
   key = 'numberkey';
   value = 2;
   lccache.set(key, value, 3);
-  equals(lccache.get(key)+1, value+1, 'We expect incremented value to be ' + (value+1));
+  equal(lccache.get(key)+1, value+1, 'We expect incremented value to be ' + (value+1));
 
   key = 'arraykey';
   value = ['a', 'b', 'c'];
   lccache.set(key, value, 3);
-  equals(lccache.get(key).length, value.length, 'We expect array to have length ' + value.length);
+  equal(lccache.get(key).length, value.length, 'We expect array to have length ' + value.length);
 
   key = 'objectkey';
   value = {'name': 'Pamela', 'age': 26};
   lccache.set(key, value, 3);
-  equals(lccache.get(key).name, value.name, 'We expect name to be ' + value.name);
+  equal(lccache.get(key).name, value.name, 'We expect name to be ' + value.name);
 });
 
 test('Testing remove()', function() {
   var key = 'thekey';
   lccache.set(key, 'bla', 2);
   lccache.remove(key);
-  equals(lccache.get(key), null, 'We expect value to be null');
+  equal(lccache.get(key), null, 'We expect value to be null');
 });
 
 // We do this test last since it must wait 1 minute
@@ -57,7 +57,7 @@ asyncTest('Testing set() and get() with string and expiration', 1, function() {
   var minutes = 1;
   lccache.set(key, value, minutes); 
   setTimeout(function() {
-    equals(lccache.get(key), null, 'We expect value to be null');
+    equal(lccache.get(key), null, 'We expect value to be null');
     start();
   }, 1000*60*minutes);
 });
